@@ -10,8 +10,8 @@
 
 int main(int argc, char **argv)
 {
-  int passwords = 10;
-  int passlength = 8;
+  unsigned passwords = 10;
+  unsigned passlength = 8;
   unsigned char mask = 0x0F;
   char *passbuf;
 
@@ -37,15 +37,15 @@ int main(int argc, char **argv)
   if(parPws->value && strlen(parPws->value))
   {
     sscanf(parPws->value, "%u", &passwords);
-		if(passwords >= 0x00FFFFFF) passwords = 0x00EFFFFF;
-		if(passwords <= 0) passwords = 1;
+    if(passwords >= 0x00FFFFFF) passwords = 0x00EFFFFF;
+    if(passwords <= 0) passwords = 1;
   }
 
   if(parPwl->value && strlen(parPwl->value))
   {
     sscanf(parPwl->value, "%u", &passlength);
-		if(passlength >= 0x00FFFFFF) passlength = 0x00EFFFFF;
-		if(passlength <= 0) passlength = 1;
+    if(passlength >= 0x00FFFFFF) passlength = 0x00EFFFFF;
+    if(passlength <= 0) passlength = 1;
   }
 
   if(swUcAlpha->switched || swLcAlpha->switched || swNumbers->switched || swSpecial->switched) mask = 0; 
@@ -56,16 +56,16 @@ int main(int argc, char **argv)
 
 
   passbuf = malloc(passlength + 1);
-	if(!passbuf)
-	{
-		perror("Failed to allocate the password buffer!");
-		return EXIT_FAILURE;
-	}
+  if(!passbuf)
+  {
+    perror("Failed to allocate the password buffer!");
+    return EXIT_FAILURE;
+  }
   passbuf[passlength] = 0;
 
   srand(time(0));
   
-  int i, j;
+  unsigned i, j;
   
   for(j = 0; j < passwords; j++)
   {
@@ -87,7 +87,7 @@ int main(int argc, char **argv)
     printf("%s\n", passbuf);
   }
 
-	for(i = 0; i < passlength; i++) passbuf[i] = 0; //zero the memory, just in case	
+  for(i = 0; i < passlength; i++) passbuf[i] = 0; //zero the memory, just in case	
 
   free(passbuf); 
   arg_destroyArgs(args); 
