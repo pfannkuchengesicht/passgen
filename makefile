@@ -11,8 +11,13 @@ EXEC=passgen
 all: $(SOURCES) $(EXEC) $(GMANPAGES)
 
 install: all
-	echo "installing..."
-	cp passgen /usr/bin/passgen
+	@echo "installing..."
+	cp $(EXEC) /usr/bin/
+	cp $(GMANPAGES) /usr/share/man/man1/
+
+uninstall:
+	rm -f $(patsubst %,/usr/share/man/man1/%,$(GMANPAGES))
+	rm -f $(patsubst %,/usr/bin/%,$(EXEC))
 
 %.1.gz: %.1
 	gzip -k $<
