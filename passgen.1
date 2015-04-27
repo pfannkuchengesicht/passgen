@@ -1,0 +1,36 @@
+.TH passgen 1 2015-04-27
+.SH NAME
+passgen \- another password generator
+.SH SYNOPSIS
+.B passgen 
+[options]
+.SH DESCRIPTION
+A simple password generator written in ANSI-C.
+.SH OPTIONS
+.TP
+.BR \-l " " \fI<number>\fR ", " \-\-password-length " " \fI<number>\fR
+Lengths of the generated passwords.(Default: 8)
+.TP
+.BR \-n " " \fI<number>\fR ", " \-\-passwords " " \fI<number>\fR
+Amount of passwords to generate.(Default: 10)
+.TP
+.BR \-h ", " --help
+Displays the help page.
+.TP
+.BR \-A ", " \-\-UAlpha
+Use upper case characters(A-Z) in the generated passwords.
+.TP
+.BR \-a ", " \-\-LAlpha
+Use lower case characters(a-z) in the generated passwords.
+.TP
+.BR \-0 ", " \-\-Numbers
+Use digits(0-9) in the generated passwords.
+.TP
+.BR \-s ", " \-\-Special
+Use special characters in the generated passwords.
+.PP
+By default \fB\-A \-a \-0 \-s\fR are set. Switches can be combined, e.g. \fB\-Aas0\fR equals \fB\-A \-a \-s \-0\fR
+.SH AUTHOR
+Written by Roy Freytag.
+.SH SEE ALSO
+passwd(1)
